@@ -25,6 +25,7 @@ install:
       Set-Item -Path Env:Path -Value ($Env:AppData + "\npm;" + $Env:Path)
     }
 - cmd: echo %PATH%
+- cmd: dir %APPDATA%\npm
 - sh: |
     env
     if test "$(uname -s)" = "Linux"; then
