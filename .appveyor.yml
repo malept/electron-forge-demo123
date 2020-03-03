@@ -37,3 +37,7 @@ test_script:
 build_script:
 - cmd: IF %APPVEYOR_REPO_TAG% EQU true yarn publish
 - sh: if test "$APPVEYOR_REPO_TAG" = "true"; then yarn publish; fi
+
+artifacts:
+- path: out/make/*.*
+  name: Distributables
