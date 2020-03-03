@@ -87,3 +87,6 @@ jobs:
         env:
           DEBUG: electron-installer-snap:snapcraft
           MAKER: ${{ matrix.distributable.maker }}
+      - name: show out dir
+        shell: bash
+        run: ls out
