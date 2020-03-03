@@ -24,11 +24,7 @@ install:
     if ($isWindows) {
       Install-Product node $env:nodejs_version
     }
-- sh: |
-    if test "$(uname -s)" = "Linux"; then
-      sudo apt-get install --yes --no-install-recommends snapcraft
-      ci/install_snap_dependencies.sh
-    fi
+- sh: ci/install_snap_dependencies.sh
 - npm install
 - npm update
 
