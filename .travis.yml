@@ -3,7 +3,7 @@ node_js: "10"
 os:
 - linux
 - osx
-dist: xenial
+dist: bionic
 osx_image: xcode10.1
 
 cache:
