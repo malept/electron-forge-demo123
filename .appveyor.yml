@@ -9,7 +9,7 @@ environment:
     secure: t1s7bP+lo6z4Gv+F0J2pvD4KY2nzgdtOtrz/eN3Q41XgoV4+GnBtuY2oHQdQJ1nH
 cache:
 - '%APPDATA%\npm-cache'
-- '%USERPROFILE%\.electron'
+- '%LOCALAPPDATA%\electron\Cache'
 - '$HOME/.cache/electron'
 - '$HOME/.npm'
 - node_modules
