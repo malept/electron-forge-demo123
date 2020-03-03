@@ -24,6 +24,7 @@ install:
       Install-Product node $env:nodejs_version $env:platform
       Set-Item -Path Env:Path -Value ($Env:AppData + "\npm;" + $Env:Path)
     }
+- cmd: echo %PATH%
 - sh: |
     if test "$(uname -s)" = "Linux"; then
       sudo apt-get install --yes --no-install-recommends snapcraft
