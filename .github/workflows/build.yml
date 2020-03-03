@@ -47,15 +47,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [windows-latest, macOS-latest, ubuntu-latest]
+        maker: zip
         include:
-          - os: windows-latest
-            maker: zip
-          - os: macOS-latest
-            maker: zip
-          - os: linux-latest
+          - os: ubuntu-latest
             maker: snap
-          - os: linux-latest
-            maker: zip
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app
