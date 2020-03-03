@@ -28,6 +28,6 @@ env:
 before_install: ci/install_snap_dependencies.sh
 
 script:
-- npm run lint
-- if test -z "$TRAVIS_TAG"; then npm run make; fi
-after_success: if test -n "$TRAVIS_TAG"; then npm run publish; fi
+- yarn lint
+- if test -z "$TRAVIS_TAG"; then yarn make; fi
+after_success: if test -n "$TRAVIS_TAG"; then yarn publish; fi

@@ -10,7 +10,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  bundle:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -21,22 +21,67 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Snapcraft setup
-        run: ci/install_snap_dependencies.sh
-      - name: Cache node_modules
-        uses: actions/cache@v1
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
-          path: node_modules
-          key: ${{ matrix.node-version }}-build-${{ hashFiles('**/package.json') }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+            ${{ runner.os }}-yarn-
       - name: Install
-        run: |
-          npm install --engine-strict
-          npm update
-      - name: Build
-        run: npm run make
+        run: yarn
+      - name: Bundle app
+        run: yarn package
         env:
           DEBUG: electron-installer-snap:snapcraft
+      - name: Save bundled app
+        uses: actions/upload-artifact@v1
+        with:
+          name: bundled-app
+          path: out
+  installers:
+    needs: bundle
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            maker: zip
+          - os: macOS-latest
+            maker: zip
+          - os: linux-latest
+            maker: snap
+          - os: linux-latest
+            maker: zip
+    steps:
+      - uses: actions/checkout@v2
+      - name: Load bundled app
+        uses: actions/download-artifact@v1
+        with:
+          name: bundled-app
+      - name: Dependency setup
+        run: ci/install_snap_dependencies.sh
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        run: yarn
+      - name: Create distributables
+        run: yarn make --skip-package --targets=@electron-forge/maker-$MAKER
+        env:
+          DEBUG: electron-installer-snap:snapcraft
+          MAKER: ${{ matrix.maker }}

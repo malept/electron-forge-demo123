@@ -8,11 +8,11 @@ environment:
   GITHUB_TOKEN:
     secure: t1s7bP+lo6z4Gv+F0J2pvD4KY2nzgdtOtrz/eN3Q41XgoV4+GnBtuY2oHQdQJ1nH
 cache:
-- '%APPDATA%\npm-cache'
+- '%LOCALAPPDATA%\Yarn'
+- '$HOME/.yarn'
 - '%LOCALAPPDATA%\electron\Cache'
 - '$HOME/.cache/electron'
 - '$HOME/Library/Caches/electron'
-- '$HOME/.npm'
 - node_modules
 branches:
   only:
@@ -25,16 +25,15 @@ install:
       Install-Product node $env:nodejs_version
     }
 - sh: ci/install_snap_dependencies.sh
-- npm install
-- npm update
+- yarn
 
 test_script:
 - node --version
-- npm --version
-- npm run lint
-- cmd: if %APPVEYOR_REPO_TAG% EQU false npm run make
-- sh: if test "$APPVEYOR_REPO_TAG" = "false"; then npm run make; fi
+- yarn --version
+- yarn lint
+- cmd: if %APPVEYOR_REPO_TAG% EQU false yarn make
+- sh: if test "$APPVEYOR_REPO_TAG" = "false"; then yarn make; fi
 
 build_script:
-- cmd: IF %APPVEYOR_REPO_TAG% EQU true npm run publish
-- sh: if test "$APPVEYOR_REPO_TAG" = "true"; then npm run publish; fi
+- cmd: IF %APPVEYOR_REPO_TAG% EQU true yarn publish
+- sh: if test "$APPVEYOR_REPO_TAG" = "true"; then yarn publish; fi
