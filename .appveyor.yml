@@ -11,6 +11,7 @@ cache:
 - '%APPDATA%\npm-cache'
 - '%LOCALAPPDATA%\electron\Cache'
 - '$HOME/.cache/electron'
+- '$HOME/Library/Caches/electron'
 - '$HOME/.npm'
 - node_modules
 branches:

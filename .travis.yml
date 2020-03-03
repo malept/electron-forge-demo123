@@ -3,6 +3,7 @@ node_js: "10"
 os:
 - linux
 - osx
+- windows
 dist: bionic
 osx_image: xcode10.1
 
@@ -11,6 +12,8 @@ cache:
   yarn: true
   directories:
   - $HOME/.cache/electron
+  - $HOME/Library/Caches/electron
+  - $HOME/AppData/Local/electron/Cache
 
 addons:
   apt:
@@ -20,14 +23,11 @@ addons:
 
 env:
   - DEBUG: electron-installer-snap:snapcraft
+  - YARN_GPG: no
 
 before_install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install --yes --no-install-recommends snapcraft; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ci/install_snap_dependencies.sh; fi
-
-install:
-- npm install
-- npm update
 
 script:
 - npm run lint
