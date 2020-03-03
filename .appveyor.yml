@@ -19,8 +19,15 @@ branches:
   - master
   - /^v\d\.\d\.\d/
 install:
-# - ps: Install-Product node $env:nodejs_version $env:platform
+- ps: |
+    if ($isWindows) {
+      Install-Product node $env:nodejs_version $env:platform
+    }
 - cmd: set PATH=%APPDATA%\npm;%PATH%
+- sh: |
+    if test "$(uname -s)" = "Linux"; then
+      ci/install_snap_dependencies.sh
+    fi
 - npm install
 - npm update
 
@@ -29,6 +36,8 @@ test_script:
 - npm --version
 - npm run lint
 - cmd: if %APPVEYOR_REPO_TAG% EQU false npm run make
+- sh: if test -z "$APPVEYOR_REPO_TAG"; then npm run make; fi
 
 build_script:
 - cmd: IF %APPVEYOR_REPO_TAG% EQU true npm run publish
+- sh: if test -n "$APPVEYOR_REPO_TAG"; then npm run publish; fi
