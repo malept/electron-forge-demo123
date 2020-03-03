@@ -10,6 +10,7 @@ cache:
 - node_modules
 branches:
   only:
+  - forge6
   - master
   - /^v\d\.\d\.\d/
 install:
