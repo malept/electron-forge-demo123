@@ -19,27 +19,14 @@
       "packagerConfig": {},
       "makers": [
         {
-          "name": "@electron-forge/maker-deb",
-          "config": {
-            "name": "demo123"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "name": "@electron-forge/maker-snap"
         },
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin"
+            "darwin",
+            "win32"
           ]
-        },
-        {
-          "name": "@electron-forge/maker-appx",
-          "config": {
-            "packageName": "",
-            "name": "demo123"
-          }
         }
       ],
       "publishers": [
@@ -60,9 +47,7 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.50",
-    "@electron-forge/maker-appx": "6.0.0-beta.50",
-    "@electron-forge/maker-deb": "6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "6.0.0-beta.50",
+    "@electron-forge/maker-snap": "6.0.0-beta.50",
     "@electron-forge/maker-zip": "6.0.0-beta.50",
     "@electron-forge/publisher-github": "6.0.0-beta.50",
     "electron": "^8.0.3",

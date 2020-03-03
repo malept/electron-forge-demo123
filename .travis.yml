@@ -18,6 +18,10 @@ addons:
     - fakeroot
     - rpm
 
+before_install:
+- sudo apt-get install --yes --no-install-recommends snapcraft
+- ci/install_snap_dependencies.sh
+
 install:
 - npm install
 - npm update
