@@ -21,11 +21,8 @@ branches:
 install:
 - ps: |
     if ($isWindows) {
-      Install-Product node $env:nodejs_version $env:platform
-      Set-Item -Path Env:Path -Value ($Env:AppData + "\npm;" + $Env:Path)
+      Install-Product node $env:nodejs_version
     }
-- cmd: echo %PATH%
-- cmd: dir %APPDATA%\npm
 - sh: |
     env
     if test "$(uname -s)" = "Linux"; then
@@ -40,8 +37,8 @@ test_script:
 - npm --version
 - npm run lint
 - cmd: if %APPVEYOR_REPO_TAG% EQU false npm run make
-- sh: if test -z "$APPVEYOR_REPO_TAG"; then npm run make; fi
+- sh: if test "$APPVEYOR_REPO_TAG" = "false"; then npm run make; fi
 
 build_script:
 - cmd: IF %APPVEYOR_REPO_TAG% EQU true npm run publish
-- sh: if test -n "$APPVEYOR_REPO_TAG"; then npm run publish; fi
+- sh: if test "$APPVEYOR_REPO_TAG" = "true"; then npm run publish; fi
