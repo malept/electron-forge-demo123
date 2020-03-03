@@ -1,5 +1,8 @@
-platform:
-- x64
+image:
+- Visual Studio 2019
+- Ubuntu
+- macOS
+stack: node 10
 environment:
   nodejs_version: "10"
   GITHUB_TOKEN:
@@ -7,6 +10,8 @@ environment:
 cache:
 - '%APPDATA%\npm-cache'
 - '%USERPROFILE%\.electron'
+- '$HOME/.cache/electron'
+- '$HOME/.npm'
 - node_modules
 branches:
   only:
@@ -14,8 +19,8 @@ branches:
   - master
   - /^v\d\.\d\.\d/
 install:
-- ps: Install-Product node $env:nodejs_version $env:platform
-- set PATH=%APPDATA%\npm;%PATH%
+# - ps: Install-Product node $env:nodejs_version $env:platform
+- cmd: set PATH=%APPDATA%\npm;%PATH%
 - npm install
 - npm update
 
@@ -23,7 +28,7 @@ test_script:
 - node --version
 - npm --version
 - npm run lint
-- if %APPVEYOR_REPO_TAG% EQU false npm run make
+- cmd: if %APPVEYOR_REPO_TAG% EQU false npm run make
 
 build_script:
-- IF %APPVEYOR_REPO_TAG% EQU true npm run publish
+- cmd: IF %APPVEYOR_REPO_TAG% EQU true npm run publish
