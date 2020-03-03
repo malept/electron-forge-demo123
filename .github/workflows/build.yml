@@ -82,6 +82,7 @@ jobs:
       - name: Install
         run: yarn
       - name: Create distributables
+        shell: bash
         run: ci/make-distributable.sh
         env:
           DEBUG: electron-installer-snap:snapcraft
