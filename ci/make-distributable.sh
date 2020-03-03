@@ -1,3 +1,3 @@
-#!/bin/bash -e
+#!/bin/bash -xe
 
-yarn make --skip-package --targets=@electron-forge/maker-$MAKER
+DEBUG=electron-forge:* yarn make --skip-package --targets=@electron-forge/maker-$MAKER
