@@ -22,8 +22,8 @@ env:
   - DEBUG: electron-installer-snap:snapcraft
 
 before_install:
-- sudo apt-get install --yes --no-install-recommends snapcraft
-- ci/install_snap_dependencies.sh
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install --yes --no-install-recommends snapcraft; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ci/install_snap_dependencies.sh; fi
 
 install:
 - npm install
