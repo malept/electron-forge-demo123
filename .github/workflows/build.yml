@@ -40,14 +40,14 @@ jobs:
       - name: Save bundled app
         uses: actions/upload-artifact@v1
         with:
-          name: bundled-app
+          name: bundled-app-${{ matrix.os }}
           path: out
   installers:
     needs: bundle
-    runs-on: ${{ matrix.os-maker.os }}
+    runs-on: ${{ matrix.distributable.os }}
     strategy:
       matrix:
-        os-maker:
+        distributable:
           - os: windows-latest
             maker: zip
           - os: macOS-latest
@@ -61,7 +61,7 @@ jobs:
       - name: Load bundled app
         uses: actions/download-artifact@v1
         with:
-          name: bundled-app
+          name: bundled-app-${{ matrix.distributable.os }}
       - name: Dependency setup
         run: ci/install_snap_dependencies.sh
       - name: Setup Node.js
@@ -81,7 +81,7 @@ jobs:
       - name: Install
         run: yarn
       - name: Create distributables
-        run: yarn make --skip-package --targets=@electron-forge/maker-$MAKER
+        run: ci/make-distributable.sh
         env:
           DEBUG: electron-installer-snap:snapcraft
-          MAKER: ${{ matrix.os-maker.maker }}
+          MAKER: ${{ matrix.distributable.maker }}
