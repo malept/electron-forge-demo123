@@ -24,7 +24,6 @@ install:
       Install-Product node $env:nodejs_version
     }
 - sh: |
-    env
     if test "$(uname -s)" = "Linux"; then
       sudo apt-get install --yes --no-install-recommends snapcraft
       ci/install_snap_dependencies.sh
