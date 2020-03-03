@@ -19,7 +19,14 @@
       "packagerConfig": {},
       "makers": [
         {
-          "name": "@electron-forge/maker-snap"
+          "name": "@electron-forge/maker-snap",
+          "config": {
+            "features": {
+              "audio": true,
+              "webgl": true
+            },
+            "summary": "My app"
+          }
         },
         {
           "name": "@electron-forge/maker-zip",
