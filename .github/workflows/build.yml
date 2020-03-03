@@ -55,6 +55,10 @@ jobs:
           - os: ubuntu-latest
             maker: zip
           - os: ubuntu-latest
+            maker: deb
+          - os: ubuntu-latest
+            maker: rpm
+          - os: ubuntu-latest
             maker: snap
     steps:
       - uses: actions/checkout@v2
