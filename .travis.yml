@@ -18,6 +18,9 @@ addons:
     - fakeroot
     - rpm
 
+env:
+  - DEBUG: electron-installer-snap:snapcraft
+
 before_install:
 - sudo apt-get install --yes --no-install-recommends snapcraft
 - ci/install_snap_dependencies.sh
