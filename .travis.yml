@@ -23,7 +23,7 @@ addons:
 
 env:
   - DEBUG: electron-installer-snap:snapcraft
-  - YARN_GPG: no
+    YARN_GPG: no
 
 before_install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install --yes --no-install-recommends snapcraft; fi
