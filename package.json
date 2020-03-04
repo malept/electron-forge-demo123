@@ -18,7 +18,8 @@
     "forge": {
       "packagerConfig": {
         "osxSign": {
-          "identity": "codesign.electronjs.org"
+          "identity": "codesign.electronjs.org",
+          "gatekeeper-assess": false
         }
       },
       "makers": [
