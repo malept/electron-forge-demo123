@@ -112,5 +112,5 @@ jobs:
       - name: Save distributable
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ maker }} (${{ matrix.distributable.platform }})
+          name: ${{ matrix.distributable.maker }} (${{ matrix.distributable.platform }})
           path: out/make
