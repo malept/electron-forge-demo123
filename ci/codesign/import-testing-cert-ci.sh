@@ -19,4 +19,7 @@ if test "$(uname -s)" = "Darwin"; then
 
     echo "Setting key partition list"
     security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $KEYCHAIN_PASSWORD $KEY_CHAIN
+
+    # Echo the identity
+    security find-identity -v -p codesigning
 fi
