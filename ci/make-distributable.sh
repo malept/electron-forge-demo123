@@ -1,3 +1,3 @@
 #!/bin/bash -xe
 
-yarn make --skip-package --targets=@electron-forge/maker-$MAKER
+yarn make --skip-package --platform $PLATFORM --targets=@electron-forge/maker-$MAKER
