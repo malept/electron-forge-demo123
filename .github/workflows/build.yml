@@ -83,7 +83,7 @@ jobs:
       - name: Load bundled app
         uses: actions/download-artifact@v1
         with:
-          name: bundled-app-${{ matrix.distributable.os }}
+          name: bundled-app-${{ matrix.distributable.platform }}
           path: out
       - name: Dependency setup
         run: ci/install_snap_dependencies.sh
