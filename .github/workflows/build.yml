@@ -11,10 +11,18 @@ on:
 
 jobs:
   bundle:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.platform.host }}
     strategy:
       matrix:
-        os: [windows-latest, macOS-latest, ubuntu-latest]
+        platform:
+          - host: windows-latest
+            target: win32
+          - host: macOS-latest
+            target: darwin
+          - host: macOS-latest
+            target: mas
+          - host: ubuntu-latest
+            target: linux
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
@@ -34,31 +42,41 @@ jobs:
       - name: Install
         run: yarn
       - name: Bundle app
-        run: yarn package
+        shell: bash
+        run: ci/make-bundle.sh
         env:
-          DEBUG: electron-installer-snap:snapcraft
+          PLATFORM: ${{ matrix.platform.target }}
       - name: Save bundled app
         uses: actions/upload-artifact@v1
         with:
-          name: bundled-app-${{ matrix.os }}
+          name: bundled-app-${{ matrix.platform.target }}
           path: out
   installers:
     needs: bundle
-    runs-on: ${{ matrix.distributable.os }}
+    runs-on: ${{ matrix.distributable.os }}-latest
     strategy:
       matrix:
         distributable:
-          - os: windows-latest
+          - os: Windows
+            platform: win32
             maker: zip
-          - os: macOS-latest
+          - os: macOS
+            platform: darwin
             maker: zip
-          - os: ubuntu-latest
+          - os: macOS
+            platform: mas
             maker: zip
-          - os: ubuntu-latest
+          - os: Ubuntu
+            platform: linux
+            maker: zip
+          - os: Ubuntu
+            platform: linux
             maker: deb
-          - os: ubuntu-latest
+          - os: Ubuntu
+            platform: linux
             maker: rpm
-          - os: ubuntu-latest
+          - os: Ubuntu
+            platform: linux
             maker: snap
     steps:
       - uses: actions/checkout@v2
@@ -91,6 +109,8 @@ jobs:
         env:
           DEBUG: electron-installer-snap:snapcraft
           MAKER: ${{ matrix.distributable.maker }}
-      - name: show distributable dir
-        shell: bash
-        run: ls out/make
+      - name: Save distributable
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ maker }} (${{ matrix.distributable.platform }})
+          path: out/make
