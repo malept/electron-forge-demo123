@@ -24,6 +24,9 @@ install:
     if ($isWindows) {
       Install-Product node $env:nodejs_version
     }
+    if ($isLinux) {
+      sudo apt-get install --yes --no-install-recommends rpm dpkg fakeroot
+    }
 - sh: ci/install_snap_dependencies.sh
 - yarn
 
