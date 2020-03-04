@@ -39,5 +39,5 @@ build_script:
 - sh: if test "$APPVEYOR_REPO_TAG" = "true"; then yarn publish; fi
 
 artifacts:
-- path: out/make/*.*
+- path: out/make/**/*
   name: Distributables
