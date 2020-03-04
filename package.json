@@ -29,7 +29,10 @@
           "name": "@electron-forge/maker-dmg"
         },
         {
-          "name": "@electron-forge/maker-pkg"
+          "name": "@electron-forge/maker-pkg",
+          "config": {
+            "identity": "codesign.electronjs.org"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm"
