@@ -25,7 +25,7 @@ env:
   - DEBUG: electron-installer-snap:snapcraft
     YARN_GPG: no
 
-before_install: ci/install_snap_dependencies.sh
+before_install: ci/platform_setup.sh
 
 script:
 - yarn lint

@@ -40,6 +40,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Set up macOS signing certificate
+        run: ci/codesign/import-testing-cert-ci.sh
       - name: Install
         run: yarn
       - name: Bundle app
@@ -98,8 +100,8 @@ jobs:
         with:
           name: bundled-app-${{ matrix.distributable.platform }}
           path: out
-      - name: Dependency setup
-        run: ci/install_snap_dependencies.sh
+      - name: Setup Platform dependencies
+        run: ci/platform_setup.sh
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:

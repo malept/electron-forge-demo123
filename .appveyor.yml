@@ -29,7 +29,7 @@ install:
     } else {
       brew install yarn
     }
-- sh: ci/install_snap_dependencies.sh
+- sh: ci/platform_setup.sh
 - yarn
 
 test_script:
