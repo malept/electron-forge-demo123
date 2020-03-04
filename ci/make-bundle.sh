@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yarn package --platform $PLATFORM
+DEBUG="electron-osx-sign*" yarn package --platform $PLATFORM
