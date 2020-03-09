@@ -1,9 +1,5 @@
 language: node_js
 node_js: "10"
-os:
-- linux
-- osx
-- windows
 dist: bionic
 osx_image: xcode10.1
 
@@ -21,9 +17,6 @@ addons:
     - fakeroot
     - rpm
 
-env:
-  - YARN_GPG: no
-
 stages:
   - Lint
   - Build
@@ -40,6 +33,7 @@ jobs:
       env:
         - PLATFORM=win32
         - MAKER=zip
+        - YARN_GPG=no
     - os: osx
       env:
         - PLATFORM=darwin
