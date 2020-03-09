@@ -22,8 +22,7 @@ addons:
     - rpm
 
 env:
-  - DEBUG: electron-installer-snap:snapcraft
-    YARN_GPG: no
+  - YARN_GPG: no
 
 stages:
   - Lint
@@ -69,6 +68,7 @@ jobs:
       env:
         - PLATFORM=linux
         - MAKER=snap
+        - DEBUG=electron-installer-snap:snapcraft
 
 before_install: ci/platform_setup.sh
 
