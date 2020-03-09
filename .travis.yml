@@ -32,6 +32,7 @@ stages:
 jobs:
   include:
     - stage: Lint
+      before_install: echo 'no setup necessary'
       script: yarn lint
     - stage: Build
       os: windows
