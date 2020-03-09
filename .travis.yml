@@ -30,6 +30,8 @@ stages:
   - Build
 
 jobs:
+  exclude:
+    - stage: test
   include:
     - stage: Lint
       before_install: echo 'no setup necessary'
