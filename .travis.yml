@@ -25,9 +25,54 @@ env:
   - DEBUG: electron-installer-snap:snapcraft
     YARN_GPG: no
 
+stages:
+  - Lint
+  - Build
+
+jobs:
+  include:
+    - stage: Lint
+      script: yarn lint
+    - stage: Build
+      os: windows
+      env:
+        - PLATFORM=win32
+        - MAKER=zip
+    - os: osx
+      env:
+        - PLATFORM=darwin
+        - MAKER=dmg
+    - os: osx
+      env:
+        - PLATFORM=darwin
+        - MAKER=zip
+    - os: osx
+      env:
+        - PLATFORM=mas
+        - MAKER=dmg
+    - os: osx
+      env:
+        - PLATFORM=mas
+        - MAKER=zip
+    - os: bionic
+      env:
+        - PLATFORM=linux
+        - MAKER=deb
+    - os: bionic
+      env:
+        - PLATFORM=linux
+        - MAKER=rpm
+    - os: bionic
+      env:
+        - PLATFORM=linux
+        - MAKER=snap
+
 before_install: ci/platform_setup.sh
 
 script:
-- yarn lint
-- if test -z "$TRAVIS_TAG"; then yarn make; fi
-after_success: if test -n "$TRAVIS_TAG"; then yarn publish; fi
+- |
+  if test -z "$TRAVIS_TAG"; then
+    ci/make-distributable.sh
+  else
+    yarn publish
+  fi
