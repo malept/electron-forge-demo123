@@ -69,7 +69,7 @@ before_install: ci/platform_setup.sh
 script:
 - |
   if test -z "$TRAVIS_TAG"; then
-    ci/make-distributable.sh
+    yarn make --platform $PLATFORM --targets=@electron-forge/maker-$MAKER
   else
     yarn publish
   fi
