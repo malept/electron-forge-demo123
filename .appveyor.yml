@@ -25,7 +25,6 @@ install:
       Install-Product node $env:nodejs_version
     } elseif ($isLinux) {
       sudo apt-get update
-      sudo apt-get install --yes --no-install-recommends rpm dpkg fakeroot
     } else {
       brew install yarn
     }
