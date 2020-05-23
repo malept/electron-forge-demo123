@@ -24,7 +24,7 @@ install_flatpak() {
 if test "$(uname -s)" = "Linux"; then
     sudo add-apt-repository -y ppa:alexlarsson/flatpak
     sudo apt-get update
-    sudo apt-get install -y --no-install-recommends flatpak-builder
+    sudo apt-get install -y --no-install-recommends flatpak-builder elfutils
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     install_runtime x86_64 org.freedesktop.Sdk 19.08
