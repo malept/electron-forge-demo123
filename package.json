@@ -30,6 +30,9 @@
           "name": "@electron-forge/maker-dmg"
         },
         {
+          "name": "@electron-forge/maker-flatpak"
+        },
+        {
           "name": "@electron-forge/maker-pkg",
           "config": {
             "identity": "codesign.electronjs.org"
@@ -75,6 +78,7 @@
     "@electron-forge/cli": "^6.0.0-beta.50",
     "@electron-forge/maker-deb": "^6.0.0-beta.50",
     "@electron-forge/maker-dmg": "^6.0.0-beta.50",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.50",
     "@electron-forge/maker-pkg": "^6.0.0-beta.50",
     "@electron-forge/maker-rpm": "^6.0.0-beta.50",
     "@electron-forge/maker-snap": "6.0.0-beta.50",

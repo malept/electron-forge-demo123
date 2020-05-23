@@ -2,6 +2,7 @@
 
 case "$(uname -s)" in
     "Linux")
+        "$(dirname $0)"/install_flatpak_dependencies.sh
         "$(dirname $0)"/install_snap_dependencies.sh
         ;;
     "Darwin")

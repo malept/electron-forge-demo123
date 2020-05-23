@@ -112,6 +112,9 @@ jobs:
             maker: deb
           - os: Ubuntu
             platform: linux
+            maker: flatpak
+          - os: Ubuntu
+            platform: linux
             maker: rpm
           - os: Ubuntu
             platform: linux

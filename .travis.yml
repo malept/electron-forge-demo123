@@ -57,6 +57,10 @@ jobs:
     - os: bionic
       env:
         - PLATFORM=linux
+        - MAKER=flatpak
+    - os: bionic
+      env:
+        - PLATFORM=linux
         - MAKER=rpm
     - os: bionic
       env:
