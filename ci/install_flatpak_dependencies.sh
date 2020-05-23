@@ -23,6 +23,7 @@ install_flatpak() {
 
 if test "$(uname -s)" = "Linux"; then
     sudo add-apt-repository -y ppa:alexlarsson/flatpak
+    sudo apt-get update
     sudo apt-get install -y --no-install-recommends flatpak-builder
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
