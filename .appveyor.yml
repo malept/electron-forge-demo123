@@ -6,6 +6,7 @@ environment:
   nodejs_version: "10"
   GITHUB_TOKEN:
     secure: t1s7bP+lo6z4Gv+F0J2pvD4KY2nzgdtOtrz/eN3Q41XgoV4+GnBtuY2oHQdQJ1nH
+  DEBUG: "*flatpak*"
 cache:
 - '%LOCALAPPDATA%\Yarn'
 - '$HOME/.yarn'

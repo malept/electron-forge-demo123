@@ -38,6 +38,7 @@ jobs:
       env:
         - PLATFORM=linux
         - MAKER=flatpak
+        - DEBUG=*flatpak*
 
 before_install: ci/platform_setup.sh
 
