@@ -34,35 +34,10 @@ jobs:
         - PLATFORM=win32
         - MAKER=zip
         - YARN_GPG=no
-    - os: osx
-      env:
-        - PLATFORM=darwin
-        - MAKER=dmg
-    - os: osx
-      env:
-        - PLATFORM=darwin
-        - MAKER=zip
-    - os: osx
-      env:
-        - PLATFORM=mas
-        - MAKER=dmg
-    - os: osx
-      env:
-        - PLATFORM=mas
-        - MAKER=zip
     - os: bionic
       env:
         - PLATFORM=linux
-        - MAKER=deb
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=rpm
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=snap
-        - DEBUG=electron-installer-snap:snapcraft
+        - MAKER=flatpak
 
 before_install: ci/platform_setup.sh
 

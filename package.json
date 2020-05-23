@@ -24,29 +24,7 @@
       },
       "makers": [
         {
-          "name": "@electron-forge/maker-deb"
-        },
-        {
-          "name": "@electron-forge/maker-dmg"
-        },
-        {
-          "name": "@electron-forge/maker-pkg",
-          "config": {
-            "identity": "codesign.electronjs.org"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-rpm"
-        },
-        {
-          "name": "@electron-forge/maker-snap",
-          "config": {
-            "features": {
-              "audio": true,
-              "webgl": true
-            },
-            "summary": "My app"
-          }
+          "name": "@electron-forge/maker-flatpak"
         },
         {
           "name": "@electron-forge/maker-zip",
@@ -56,15 +34,6 @@
         }
       ],
       "publishers": [
-        {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "name": "electron-forge-demo123",
-              "owner": "malept"
-            }
-          }
-        }
       ]
     }
   },
@@ -72,15 +41,9 @@
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.50",
-    "@electron-forge/maker-deb": "^6.0.0-beta.50",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.50",
-    "@electron-forge/maker-pkg": "^6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
-    "@electron-forge/maker-snap": "6.0.0-beta.50",
-    "@electron-forge/maker-zip": "6.0.0-beta.50",
-    "@electron-forge/publisher-github": "6.0.0-beta.50",
-    "electron": "^8.0.3",
-    "source-map-support": "^0.5.16"
+    "@electron-forge/cli": "^6.0.0-beta.51",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.51",
+    "electron": "^9.0.0",
+    "source-map-support": "^0.5.19"
   }
 }

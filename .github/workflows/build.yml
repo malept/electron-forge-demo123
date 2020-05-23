@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - forge6
+      - forge6-flatpak
       - master
     tags:
       - v[0-9]+.[0-9]+.[0-9]+*
@@ -86,36 +86,9 @@ jobs:
           - os: Windows
             platform: win32
             maker: zip
-          - os: macOS
-            platform: darwin
-            maker: dmg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: pkg
-          - os: macOS
-            platform: darwin
-            maker: zip
-          - os: macOS
-            platform: mas
-            maker: dmg
-          # - os: macOS
-          #   platform: mas
-          #   maker: pkg
-          - os: macOS
-            platform: mas
-            maker: zip
           - os: Ubuntu
             platform: linux
-            maker: zip
-          - os: Ubuntu
-            platform: linux
-            maker: deb
-          - os: Ubuntu
-            platform: linux
-            maker: rpm
-          - os: Ubuntu
-            platform: linux
-            maker: snap
+            maker: flatpak
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app

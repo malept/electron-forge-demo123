@@ -1,7 +1,6 @@
 image:
 - Visual Studio 2019
 - Ubuntu
-- macOS
 stack: node 10
 environment:
   nodejs_version: "10"
@@ -16,7 +15,7 @@ cache:
 - node_modules
 branches:
   only:
-  - forge6
+  - forge6-flatpak
   - master
   - /^v\d\.\d\.\d/
 install:
