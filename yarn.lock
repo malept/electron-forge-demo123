@@ -155,6 +155,16 @@
   optionalDependencies:
     "@malept/electron-installer-flatpak" "^0.11.0"
 
+"@electron-forge/maker-zip@^6.0.0-beta.51":
+  version "6.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@electron-forge/maker-zip/-/maker-zip-6.0.0-beta.51.tgz#9dc0ecc0bd3275e53c20257ad3821624d06fe7d1"
+  integrity sha512-IQVjj/z4NYcK+mF9v6DnE+5O4/lfP40OahHfGykv/hn9RZJOXZkaRiio/e1meRutpkG/lBIo8/WLs8FUcxpF9A==
+  dependencies:
+    "@electron-forge/maker-base" "6.0.0-beta.51"
+    "@electron-forge/shared-types" "6.0.0-beta.51"
+    cross-zip "^3.0.0"
+    fs-extra "^9.0.0"
+
 "@electron-forge/plugin-base@6.0.0-beta.51":
   version "6.0.0-beta.51"
   resolved "https://registry.yarnpkg.com/@electron-forge/plugin-base/-/plugin-base-6.0.0-beta.51.tgz#3d5970aca918d7500b65bc49403f89609f9faaff"
