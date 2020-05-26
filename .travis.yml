@@ -1,21 +1,11 @@
 language: node_js
 node_js: "10"
-dist: bionic
-osx_image: xcode10.1
 
 cache:
   npm: true
   yarn: true
   directories:
-  - $HOME/.cache/electron
-  - $HOME/Library/Caches/electron
   - $HOME/AppData/Local/electron/Cache
-
-addons:
-  apt:
-    packages:
-    - fakeroot
-    - rpm
 
 stages:
   - Lint
@@ -32,41 +22,8 @@ jobs:
       os: windows
       env:
         - PLATFORM=win32
-        - MAKER=zip
+        - MAKER=squirrel
         - YARN_GPG=no
-    - os: osx
-      env:
-        - PLATFORM=darwin
-        - MAKER=dmg
-    - os: osx
-      env:
-        - PLATFORM=darwin
-        - MAKER=zip
-    - os: osx
-      env:
-        - PLATFORM=mas
-        - MAKER=dmg
-    - os: osx
-      env:
-        - PLATFORM=mas
-        - MAKER=zip
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=deb
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=flatpak
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=rpm
-    - os: bionic
-      env:
-        - PLATFORM=linux
-        - MAKER=snap
-        - DEBUG=electron-installer-snap:snapcraft
 
 before_install: ci/platform_setup.sh
 
