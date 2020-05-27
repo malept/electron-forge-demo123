@@ -15,31 +15,7 @@
   "author": "mark",
   "license": "MIT",
   "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "./assets/icon"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "setupIcon": "./assets/clear.ico",
-            "iconUrl": "https://raw.githubusercontent.com/malept/electron-forge-demo123/forge6-issue-1635/assets/storm.ico"
-          }
-        }
-      ],
-      "publishers": [
-        {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "name": "electron-forge-demo123",
-              "owner": "malept"
-            }
-          }
-        }
-      ]
-    }
+    "forge": "forge.config.js"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
