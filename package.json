@@ -17,10 +17,15 @@
   "config": {
     "forge": {
       "packagerConfig": {
+        "icon": "./assets/icon"
       },
       "makers": [
         {
-          "name": "@electron-forge/maker-squirrel"
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "setupIcon": "./assets/clear.ico",
+            "iconUrl": "https://raw.githubusercontent.com/malept/electron-forge-demo123/forge6-issue-1635/assets/storm.ico"
+          }
         }
       ],
       "publishers": [
