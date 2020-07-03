@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 case "$(uname -s)" in
     "Linux")
