@@ -128,6 +128,8 @@ jobs:
           path: out
       - name: Setup Platform dependencies
         run: ci/platform_setup.sh
+        env:
+          MAKER: ${{ matrix.distributable.maker }}
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
