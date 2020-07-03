@@ -50,19 +50,19 @@ jobs:
       env:
         - PLATFORM=mas
         - MAKER=zip
-    - os: bionic
+    - os: linux
       env:
         - PLATFORM=linux
         - MAKER=deb
-    - os: bionic
+    - os: linux
       env:
         - PLATFORM=linux
         - MAKER=flatpak
-    - os: bionic
+    - os: linux
       env:
         - PLATFORM=linux
         - MAKER=rpm
-    - os: bionic
+    - os: linux
       env:
         - PLATFORM=linux
         - MAKER=snap
