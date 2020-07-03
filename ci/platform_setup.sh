@@ -7,8 +7,18 @@ case "$(uname -s)" in
             # Work around outdated apt repository keys, etc.
             sudo rm /etc/apt/sources.list.d/bazel.list
         fi
-        "$(dirname $0)"/install_flatpak_dependencies.sh
-        "$(dirname $0)"/install_snap_dependencies.sh
+        if [[ "$MAKER" = "deb" || -n "$APPVEYOR" ]]; then
+          sudo apt install --yes --no-install-recommends fakeroot dpkg
+        fi
+        if [[ "$MAKER" = "rpm" || -n "$APPVEYOR" ]]; then
+          sudo apt install --yes --no-install-recommends rpm
+        fi
+        if [[ "$MAKER" = "flatpak" || -n "$APPVEYOR" ]]; then
+          "$(dirname $0)"/install_flatpak_dependencies.sh
+        fi
+        if [[ "$MAKER" = "snap" || -n "$APPVEYOR" ]]; then
+          "$(dirname $0)"/install_snap_dependencies.sh
+        fi
         ;;
     "Darwin")
         "$(dirname $0)"/codesign/import-testing-cert-ci.sh
