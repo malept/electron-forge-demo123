@@ -17,26 +17,16 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "osxSign": {
-          "identity": "codesign.electronjs.org",
-          "gatekeeper-assess": false
-        }
       },
       "makers": [
         {
-          "name": "@electron-forge/maker-dmg"
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO"
+          }
         }
       ],
       "publishers": [
-        {
-          "name": "@electron-forge/publisher-github",
-          "config": {
-            "repository": {
-              "name": "electron-forge-demo123",
-              "owner": "malept"
-            }
-          }
-        }
       ]
     }
   },
@@ -47,7 +37,6 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.52",
     "@electron-forge/maker-dmg": "^6.0.0-beta.52",
-    "@electron-forge/publisher-github": "^6.0.0-beta.52",
     "electron": "^9.0.5",
     "source-map-support": "^0.5.16"
   }
