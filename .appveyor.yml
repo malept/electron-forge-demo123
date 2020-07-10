@@ -14,7 +14,7 @@ cache:
 - node_modules
 branches:
   only:
-  - forge6
+  - forge6-issue-1831
   - master
   - /^v\d\.\d\.\d/
 install:
