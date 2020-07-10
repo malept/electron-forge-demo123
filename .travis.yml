@@ -29,44 +29,14 @@ jobs:
       before_install: echo 'no setup necessary'
       script: yarn lint
     - stage: Build
-      os: windows
-      env:
-        - PLATFORM=win32
-        - MAKER=zip
-        - YARN_GPG=no
-    - os: osx
+      os: osx
       env:
         - PLATFORM=darwin
         - MAKER=dmg
     - os: osx
       env:
-        - PLATFORM=darwin
-        - MAKER=zip
-    - os: osx
-      env:
         - PLATFORM=mas
         - MAKER=dmg
-    - os: osx
-      env:
-        - PLATFORM=mas
-        - MAKER=zip
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=deb
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=flatpak
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=rpm
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=snap
-        - DEBUG=electron-installer-snap:snapcraft
 
 before_install: ci/platform_setup.sh
 

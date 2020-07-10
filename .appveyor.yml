@@ -1,6 +1,4 @@
 image:
-- Visual Studio 2019
-- Ubuntu
 - macOS
 stack: node 10
 environment:
