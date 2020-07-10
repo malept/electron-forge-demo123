@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yarn package --platform $PLATFORM
+npm run package -- --platform $PLATFORM

@@ -5,7 +5,6 @@ osx_image: xcode10.1
 
 cache:
   npm: true
-  yarn: true
   directories:
   - $HOME/.cache/electron
   - $HOME/Library/Caches/electron
@@ -27,7 +26,7 @@ jobs:
   include:
     - stage: Lint
       before_install: echo 'no setup necessary'
-      script: yarn lint
+      script: npm run lint
     - stage: Build
       os: osx
       env:
@@ -43,7 +42,7 @@ before_install: ci/platform_setup.sh
 script:
 - |
   if test -z "$TRAVIS_TAG"; then
-    yarn make --platform $PLATFORM --targets=@electron-forge/maker-$MAKER
+    npm run make -- --platform $PLATFORM --targets=@electron-forge/maker-$MAKER
   else
-    yarn publish
+    npm run publish
   fi

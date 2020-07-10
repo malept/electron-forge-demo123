@@ -14,7 +14,7 @@ cache:
 - node_modules
 branches:
   only:
-  - forge6-issue-1831
+  - forge6-issue-1831-npm
   - master
   - /^v\d\.\d\.\d/
 install:
@@ -23,22 +23,20 @@ install:
       Install-Product node $env:nodejs_version
     } elseif ($isLinux) {
       sudo apt-get update
-    } else {
-      brew install yarn
     }
 - sh: ci/platform_setup.sh
-- yarn
+- npm install
 
 test_script:
 - node --version
-- yarn --version
-- yarn lint
-- cmd: if %APPVEYOR_REPO_TAG% EQU false yarn make
-- sh: if test "$APPVEYOR_REPO_TAG" = "false"; then yarn make; fi
+- npm --version
+- npm run lint
+- cmd: if %APPVEYOR_REPO_TAG% EQU false npm run make
+- sh: if test "$APPVEYOR_REPO_TAG" = "false"; then npm run make; fi
 
 build_script:
-- cmd: IF %APPVEYOR_REPO_TAG% EQU true yarn publish
-- sh: if test "$APPVEYOR_REPO_TAG" = "true"; then yarn publish; fi
+- cmd: IF %APPVEYOR_REPO_TAG% EQU true npm run publish
+- sh: if test "$APPVEYOR_REPO_TAG" = "true"; then npm run publish; fi
 
 artifacts:
 - path: out/make/**/*

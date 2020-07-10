@@ -16,8 +16,7 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {
-      },
+      "packagerConfig": {},
       "makers": [
         {
           "name": "@electron-forge/maker-dmg",
@@ -26,8 +25,7 @@
           }
         }
       ],
-      "publishers": [
-      ]
+      "publishers": []
     }
   },
   "dependencies": {
