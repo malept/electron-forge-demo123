@@ -1,7 +1,6 @@
 language: node_js
 node_js: "10"
-dist: bionic
-osx_image: xcode10.1
+osx_image: xcode12
 
 cache:
   npm: true
@@ -9,13 +8,6 @@ cache:
   directories:
   - $HOME/.cache/electron
   - $HOME/Library/Caches/electron
-  - $HOME/AppData/Local/electron/Cache
-
-addons:
-  apt:
-    packages:
-    - fakeroot
-    - rpm
 
 stages:
   - Lint
@@ -29,12 +21,7 @@ jobs:
       before_install: echo 'no setup necessary'
       script: yarn lint
     - stage: Build
-      os: windows
-      env:
-        - PLATFORM=win32
-        - MAKER=zip
-        - YARN_GPG=no
-    - os: osx
+      os: osx
       env:
         - PLATFORM=darwin
         - MAKER=dmg
@@ -50,23 +37,6 @@ jobs:
       env:
         - PLATFORM=mas
         - MAKER=zip
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=deb
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=flatpak
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=rpm
-    - os: linux
-      env:
-        - PLATFORM=linux
-        - MAKER=snap
-        - DEBUG=electron-installer-snap:snapcraft
 
 before_install: ci/platform_setup.sh
 

@@ -1,10 +1,8 @@
 image:
-- Visual Studio 2019
-- Ubuntu
 - macOS
-stack: node 10
+stack: node 14
 environment:
-  nodejs_version: "10"
+  nodejs_version: "14"
   GITHUB_TOKEN:
     secure: t1s7bP+lo6z4Gv+F0J2pvD4KY2nzgdtOtrz/eN3Q41XgoV4+GnBtuY2oHQdQJ1nH
 cache:
@@ -16,18 +14,12 @@ cache:
 - node_modules
 branches:
   only:
-  - forge6
+  - forge6-issue-1899
   - master
   - /^v\d\.\d\.\d/
 install:
 - ps: |
-    if ($isWindows) {
-      Install-Product node $env:nodejs_version
-    } elseif ($isLinux) {
-      sudo apt-get update
-    } else {
-      brew install yarn
-    }
+    brew install yarn
 - sh: ci/platform_setup.sh
 - yarn
 

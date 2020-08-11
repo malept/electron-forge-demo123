@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - forge6
+      - forge6-issue-1899
       - master
     tags:
       - v[0-9]+.[0-9]+.[0-9]+*
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -38,20 +38,16 @@ jobs:
     strategy:
       matrix:
         platform:
-          - host: windows-latest
-            target: win32
           - host: macOS-latest
             target: darwin
           - host: macOS-latest
             target: mas
-          - host: ubuntu-latest
-            target: linux
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -83,42 +79,18 @@ jobs:
     strategy:
       matrix:
         distributable:
-          - os: Windows
-            platform: win32
-            maker: zip
           - os: macOS
             platform: darwin
             maker: dmg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: pkg
           - os: macOS
             platform: darwin
             maker: zip
           - os: macOS
             platform: mas
             maker: dmg
-          # - os: macOS
-          #   platform: mas
-          #   maker: pkg
           - os: macOS
             platform: mas
             maker: zip
-          - os: Ubuntu
-            platform: linux
-            maker: zip
-          - os: Ubuntu
-            platform: linux
-            maker: deb
-          - os: Ubuntu
-            platform: linux
-            maker: flatpak
-          - os: Ubuntu
-            platform: linux
-            maker: rpm
-          - os: Ubuntu
-            platform: linux
-            maker: snap
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app
@@ -133,7 +105,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
