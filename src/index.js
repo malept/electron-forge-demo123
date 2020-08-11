@@ -6,6 +6,13 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      contextIsolation: true,
+      disableBlinkFeatures: 'Auxclick',
+      enableRemoteModule: false,
+      nodeIntegration: false,
+      sandbox: true,
+    }
   });
 
   // Load the index.html of the app.
