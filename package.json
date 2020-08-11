@@ -3,13 +3,13 @@
   "productName": "demo123",
   "version": "1.4.0",
   "description": "My Electron application",
-  "main": "src/index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo no linter"
+    "lint": "eslint --ext .ts ."
   },
   "keywords": [],
   "author": "mark",
@@ -34,6 +34,24 @@
           ]
         }
       ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.ts",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ],
       "publishers": [
         {
           "name": "@electron-forge/publisher-github",
@@ -54,8 +72,20 @@
     "@electron-forge/cli": "^6.0.0-beta.52",
     "@electron-forge/maker-dmg": "^6.0.0-beta.52",
     "@electron-forge/maker-zip": "^6.0.0-beta.52",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.52",
     "@electron-forge/publisher-github": "^6.0.0-beta.52",
-    "electron": "^9.0.5",
-    "source-map-support": "^0.5.16"
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "css-loader": "^3.0.0",
+    "electron": "^9.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.0",
+    "fork-ts-checker-webpack-plugin": "^3.1.1",
+    "node-loader": "^0.6.0",
+    "source-map-support": "^0.5.16",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.0"
   }
 }
