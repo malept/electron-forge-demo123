@@ -64,7 +64,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Bundle app
-        uses: electron-forge/bundle-action@main
+        uses: electron-forge/bundle-action@malept/feat/node-installer
         with:
           macos-cert-importer: ci/codesign/import-testing-cert-ci.sh
           target-platform: ${{ matrix.platform.target }}
