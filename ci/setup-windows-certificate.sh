@@ -26,3 +26,5 @@ MakeCert.exe -n CN=ElectronForgeCI -r -h 0 -eku "1.3.6.1.5.5.7.3.3,1.3.6.1.4.1.3
 Pvk2Pfx.exe -pvk codesign.pvk -spc codesign.cer -pfx codesign.pfx || exit 1
 
 popd
+
+echo "Generated test Windows certificate"
