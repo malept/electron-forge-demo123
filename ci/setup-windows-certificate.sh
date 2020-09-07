@@ -3,8 +3,6 @@
 # See: https://docs.microsoft.com/en-us/windows/win32/appxpkg/how-to-create-a-package-signing-certificate
 #
 
-set -x
-
 if [[ -n "$APPVEYOR" ]]; then
   DIR="$(node -e "path=require('path');console.log(path.dirname(path.resolve('${BASH_SOURCE[0]}')))")"
 else
