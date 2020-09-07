@@ -5,7 +5,11 @@
 
 set -ex
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+if command -v dirname >/dev/null; then
+  DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+else
+  DIR="$(node -e "console.log(require('path').dirname(${BASH_SOURCE[0]}))")"
+fi
 
 program_files_x86="/c/Program Files (x86)"
 windows_kit_bindir="$program_files_x86/Windows Kits/10/bin"
