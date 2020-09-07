@@ -154,7 +154,7 @@ jobs:
         shell: bash
         run: ci/make-distributable.sh
         env:
-          DEBUG: electron-installer-snap:snapcraft
+          DEBUG: "electron-installer-snap:snapcraft,electron-windows-installer*"
           MAKER: ${{ matrix.distributable.maker }}
           PLATFORM: ${{ matrix.distributable.platform }}
       - name: Save distributable
