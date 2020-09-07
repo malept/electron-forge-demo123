@@ -17,6 +17,7 @@ cache:
 branches:
   only:
   - forge6
+  - forge6-certs
   - master
   - /^v\d\.\d\.\d/
 install:
