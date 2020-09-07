@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+
 module.exports = {
   "packagerConfig": {
     "osxSign": {
@@ -39,7 +42,7 @@ module.exports = {
       "config": arch => {
         const installerConfig = {}
         const pfx = path.join(__dirname, 'ci', 'codesign.pfx')
-        if (fs.pathExistsSync(pfx)) {
+        if (fs.existsSync(pfx)) {
           installerConfig.signWithParams = `/a /f ${pfx}`
         }
 
