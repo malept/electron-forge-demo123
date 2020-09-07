@@ -22,9 +22,4 @@ case "$(uname -s)" in
     "Darwin")
         "$(dirname $0)"/codesign/import-testing-cert-ci.sh
         ;;
-    "Windows"*|"MINGW"*|"MSYS"*)
-        if [[ -n "$APPVEYOR" ]]; then
-            "$(dirname $0)"/setup-windows-certificate.sh
-        fi
-        ;;
 esac
