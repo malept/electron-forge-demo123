@@ -49,7 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Windows certificate
-        if: matrix.distributable.os == 'Windows'
+        if: matrix.platform.host == 'windows-latest'
         run: ci/setup-windows-certificate.sh
         shell: bash
       - name: Setup Node.js
