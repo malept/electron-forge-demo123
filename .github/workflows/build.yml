@@ -40,12 +40,12 @@ jobs:
         platform:
           - host: windows-latest
             target: win32
-          # - host: macOS-latest
-          #   target: darwin
-          # - host: macOS-latest
-          #   target: mas
-          # - host: ubuntu-latest
-          #   target: linux
+          - host: macOS-latest
+            target: darwin
+          - host: macOS-latest
+            target: mas
+          - host: ubuntu-latest
+            target: linux
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
@@ -85,39 +85,39 @@ jobs:
           - os: Windows
             platform: win32
             maker: zip
-          # - os: macOS
-          #   platform: darwin
-          #   maker: dmg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: pkg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: zip
-          # - os: macOS
-          #   platform: mas
-          #   maker: dmg
-          # - os: macOS
-          #   platform: mas
-          #   maker: pkg
-          # - os: macOS
-          #   platform: mas
-          #   maker: zip
-          # - os: Ubuntu
-          #   platform: linux
-          #   maker: zip
-          # - os: Ubuntu
-          #   platform: linux
-          #   maker: deb
-          # - os: Ubuntu
-          #   platform: linux
-          #   maker: flatpak
-          # - os: Ubuntu
-          #   platform: linux
-          #   maker: rpm
-          # - os: Ubuntu
-          #   platform: linux
-          #   maker: snap
+          - os: macOS
+            platform: darwin
+            maker: dmg
+          - os: macOS
+            platform: darwin
+            maker: pkg
+          - os: macOS
+            platform: darwin
+            maker: zip
+          - os: macOS
+            platform: mas
+            maker: dmg
+          - os: macOS
+            platform: mas
+            maker: pkg
+          - os: macOS
+            platform: mas
+            maker: zip
+          - os: Ubuntu
+            platform: linux
+            maker: zip
+          - os: Ubuntu
+            platform: linux
+            maker: deb
+          - os: Ubuntu
+            platform: linux
+            maker: flatpak
+          - os: Ubuntu
+            platform: linux
+            maker: rpm
+          - os: Ubuntu
+            platform: linux
+            maker: snap
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app

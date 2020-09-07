@@ -39,39 +39,39 @@ jobs:
         - PLATFORM=win32
         - MAKER=squirrel
         - YARN_GPG=no
-    # - os: osx
-    #   env:
-    #     - PLATFORM=darwin
-    #     - MAKER=dmg
-    # - os: osx
-    #   env:
-    #     - PLATFORM=darwin
-    #     - MAKER=zip
-    # - os: osx
-    #   env:
-    #     - PLATFORM=mas
-    #     - MAKER=dmg
-    # - os: osx
-    #   env:
-    #     - PLATFORM=mas
-    #     - MAKER=zip
-    # - os: linux
-    #   env:
-    #     - PLATFORM=linux
-    #     - MAKER=deb
-    # - os: linux
-    #   env:
-    #     - PLATFORM=linux
-    #     - MAKER=flatpak
-    # - os: linux
-    #   env:
-    #     - PLATFORM=linux
-    #     - MAKER=rpm
-    # - os: linux
-    #   env:
-    #     - PLATFORM=linux
-    #     - MAKER=snap
-    #     - DEBUG=electron-installer-snap:snapcraft
+    - os: osx
+      env:
+        - PLATFORM=darwin
+        - MAKER=dmg
+    - os: osx
+      env:
+        - PLATFORM=darwin
+        - MAKER=zip
+    - os: osx
+      env:
+        - PLATFORM=mas
+        - MAKER=dmg
+    - os: osx
+      env:
+        - PLATFORM=mas
+        - MAKER=zip
+    - os: linux
+      env:
+        - PLATFORM=linux
+        - MAKER=deb
+    - os: linux
+      env:
+        - PLATFORM=linux
+        - MAKER=flatpak
+    - os: linux
+      env:
+        - PLATFORM=linux
+        - MAKER=rpm
+    - os: linux
+      env:
+        - PLATFORM=linux
+        - MAKER=snap
+        - DEBUG=electron-installer-snap:snapcraft
 
 before_install: ci/platform_setup.sh
 
