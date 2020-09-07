@@ -122,6 +122,10 @@ jobs:
         with:
           name: bundled-app-${{ matrix.distributable.platform }}
           path: out
+      - name: Setup Windows certificate
+        if: matrix.distributable.os == 'Windows'
+        run: ci/setup-windows-certificate.sh
+        shell: bash
       - name: Setup Platform dependencies
         run: ci/platform_setup.sh
         env:
