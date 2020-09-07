@@ -3,15 +3,13 @@
 # See: https://docs.microsoft.com/en-us/windows/win32/appxpkg/how-to-create-a-package-signing-certificate
 #
 
-set -x
+set -ex
 
-if command -v dirname >/dev/null; then
-  DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-else
+if [[ -n "$APPVEYOR" ]]; then
   DIR="$(node -e "console.log(require('path').dirname(${BASH_SOURCE[0]}))")"
+else
+  DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 fi
-
-set -e
 
 program_files_x86="/c/Program Files (x86)"
 windows_kit_bindir="$program_files_x86/Windows Kits/10/bin"
