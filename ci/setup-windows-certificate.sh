@@ -3,7 +3,7 @@
 # See: https://docs.microsoft.com/en-us/windows/win32/appxpkg/how-to-create-a-package-signing-certificate
 #
 
-set -e
+set -ex
 
 program_files_x86="/c/Program Files (x86)"
 windows_kit_bindir="$program_files_x86/Windows Kits/10/bin"
