@@ -88,18 +88,18 @@ jobs:
           - os: macOS
             platform: darwin
             maker: dmg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: pkg
+          - os: macOS
+            platform: darwin
+            maker: pkg
           - os: macOS
             platform: darwin
             maker: zip
           - os: macOS
             platform: mas
             maker: dmg
-          # - os: macOS
-          #   platform: mas
-          #   maker: pkg
+          - os: macOS
+            platform: mas
+            maker: pkg
           - os: macOS
             platform: mas
             maker: zip

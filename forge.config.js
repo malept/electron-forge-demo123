@@ -20,8 +20,10 @@ module.exports = {
     },
     {
       "name": "@electron-forge/maker-pkg",
-      "config": {
-        "identity": "codesign.electronjs.org"
+      "config": arch => {
+        // FIXME: Needs an "installer signing identity", not a codesign identity
+        // "identity": "codesign.electronjs.org"
+        return {}
       }
     },
     {
