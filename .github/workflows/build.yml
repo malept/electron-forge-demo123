@@ -125,10 +125,6 @@ jobs:
         with:
           name: bundled-app-${{ matrix.distributable.platform }}
           path: out
-      - name: Setup Windows certificate
-        if: matrix.distributable.os == 'Windows'
-        run: ci/setup-windows-certificate.sh
-        shell: bash
       - name: Setup Platform dependencies
         run: ci/platform_setup.sh
         env:
@@ -148,15 +144,15 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Install
-        run: yarn
-      - name: Create distributables
-        shell: bash
-        run: ci/make-distributable.sh
+      - name: Generate distributables
+        uses: electron-forge/distributable-action@main
+        with:
+          target-maker: "@electron-forge/maker-${{ matrix.distributable.maker }}"
+          target-platform: ${{ matrix.distributable.platform }}
+          windows-cert-filename: ci/codesign.pfx
+          windows-cert-importer: ci/setup-windows-certificate.sh
         env:
           DEBUG: "electron-installer-snap:snapcraft"
-          MAKER: ${{ matrix.distributable.maker }}
-          PLATFORM: ${{ matrix.distributable.platform }}
       - name: Save distributable
         uses: actions/upload-artifact@v1
         with:

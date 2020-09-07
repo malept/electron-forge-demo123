@@ -41,9 +41,11 @@ module.exports = {
       "name": "@electron-forge/maker-squirrel",
       "config": arch => {
         const installerConfig = {}
-        const pfx = path.join(__dirname, 'ci', 'codesign.pfx')
-        if (fs.existsSync(pfx)) {
-          installerConfig.signWithParams = `/a /f ${pfx}`
+        if (process.env.WINDOWS_CERT_FILENAME) {
+          const pfx = path.resolve(__dirname, process.env.WINDOWS_CERT_FILENAME)
+          if (fs.existsSync(pfx)) {
+            installerConfig.signWithParams = `/a /f ${pfx}`
+          }
         }
 
         return installerConfig
