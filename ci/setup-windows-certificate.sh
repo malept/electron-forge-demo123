@@ -4,7 +4,6 @@
 #
 
 if [[ "$(uname -s)" =~ "^(Windows|MINGW|MSYS).*" ]]; then
-
   if [[ -n "$APPVEYOR" ]]; then
     DIR="$(node -e "path=require('path');console.log(path.dirname(path.resolve('${BASH_SOURCE[0]}')))")"
   else
