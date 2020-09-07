@@ -54,7 +54,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "certificateFile": "ci/codesign.pfx"
+            "signWithParams": "/a /f ci/codesign.pfx"
           }
         },
         {
