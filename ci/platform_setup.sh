@@ -5,6 +5,7 @@ case "$(uname -s)" in
         if [[ -n "$GITHUB_WORKFLOW" ]]; then
             # Work around outdated apt repository keys, etc.
             sudo rm /etc/apt/sources.list.d/bazel.list
+            grep -l opensuse /etc/apt/sources.list.d/* | xargs sudo rm
         fi
         if [[ "$MAKER" = "deb" || -n "$APPVEYOR" ]]; then
           sudo apt-get install --yes --no-install-recommends fakeroot dpkg
