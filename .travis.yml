@@ -11,6 +11,12 @@ cache:
   - $HOME/Library/Caches/electron
   - $HOME/AppData/Local/electron/Cache
 
+branches:
+  only:
+  - forge6
+  - master
+  - /^v\d\.\d\.\d/
+
 addons:
   apt:
     packages:
@@ -33,6 +39,11 @@ jobs:
       env:
         - PLATFORM=win32
         - MAKER=zip
+        - YARN_GPG=no
+    - os: windows
+      env:
+        - PLATFORM=win32
+        - MAKER=squirrel
         - YARN_GPG=no
     - os: osx
       env:

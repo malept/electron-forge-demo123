@@ -23,6 +23,8 @@ install:
 - ps: |
     if ($isWindows) {
       Install-Product node $env:nodejs_version
+      bash.exe --version
+      bash.exe ci/setup-windows-certificate.sh
     } elseif ($isLinux) {
       sudo apt-get update
     } else {
