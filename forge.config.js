@@ -18,14 +18,14 @@ module.exports = {
     {
       "name": "@electron-forge/maker-flatpak"
     },
-    {
-      "name": "@electron-forge/maker-pkg",
-      "config": arch => {
-        // FIXME: Needs an "installer signing identity", not a codesign identity
-        // "identity": "codesign.electronjs.org"
-        return {}
-      }
-    },
+    // FIXME: Needs an "installer signing identity", not a codesign identity
+    // {
+    //   "name": "@electron-forge/maker-pkg",
+    //   "config": {
+    //     "identity": "codesign.electronjs.org"
+    //     return {}
+    //   }
+    // },
     {
       "name": "@electron-forge/maker-rpm"
     },
