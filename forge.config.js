@@ -2,6 +2,12 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
+  "hooks": {
+    readPackageJson: async (forgeConfig, packageJSON) => {
+      packageJSON.version = '99.99.99'
+      return packageJSON
+    }
+  },
   "packagerConfig": {
     "osxSign": {
       "identity": "codesign.electronjs.org",
