@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - forge-issue-2173
       - forge6
       - master
     tags:
