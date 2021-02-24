@@ -1,5 +1,11 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const ffi = require('ffi-napi');
+
+const libc = ffi.Library(null, {
+  'atoi': [ 'int', [ 'string' ] ]
+});
+console.log(libc.atoi('1234'));
 
 const createWindow = () => {
   // Create the browser window.
