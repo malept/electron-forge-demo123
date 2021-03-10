@@ -42,8 +42,6 @@ jobs:
             target: win32
           - host: macOS-latest
             target: darwin
-          - host: macOS-latest
-            target: mas
           - host: ubuntu-latest
             target: linux
     steps:
