@@ -17,6 +17,13 @@
   "config": {
     "forge": {
       "packagerConfig": {
+        "ignore": [
+          "\\.gitignore",
+          "/\\.github",
+          "/ci",
+          "tsconfig\\.json",
+          "yarn-error\\.log"
+        ],
         "osxSign": {
           "identity": "codesign.electronjs.org",
           "gatekeeper-assess": false
