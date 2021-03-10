@@ -21,6 +21,7 @@
           "\\.gitignore",
           "/\\.github",
           "/ci",
+          "\\.ts$",
           "tsconfig\\.json",
           "yarn-error\\.log"
         ],
