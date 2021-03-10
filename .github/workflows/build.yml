@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - discord/zip-only
+      - discord/zip-ts
       - master
     tags:
       - v[0-9]+.[0-9]+.[0-9]+*
