@@ -8,10 +8,9 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       contextIsolation: true,
-      disableBlinkFeatures: 'Auxclick',
       enableRemoteModule: false,
       nodeIntegration: false,
-      sandbox: true,
+      preload: path.join(__dirname, 'preload.js'),
     }
   });
 
