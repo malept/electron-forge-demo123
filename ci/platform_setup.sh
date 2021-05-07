@@ -4,7 +4,6 @@ case "$(uname -s)" in
     "Linux")
         if [[ -n "$GITHUB_WORKFLOW" ]]; then
             # Work around outdated apt repository keys, etc.
-            sudo rm /etc/apt/sources.list.d/bazel.list
             grep -l opensuse /etc/apt/sources.list.d/* | xargs sudo rm
         fi
         if [[ "$MAKER" = "flatpak" || -n "$APPVEYOR" ]]; then
