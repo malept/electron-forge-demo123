@@ -3,8 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - forge6
-      - master
+      - discord/flatpak-ubuntu-20.04
     tags:
       - v[0-9]+.[0-9]+.[0-9]+*
   pull_request:
@@ -38,13 +37,7 @@ jobs:
     strategy:
       matrix:
         platform:
-          - host: windows-latest
-            target: win32
-          - host: macOS-latest
-            target: darwin
-          - host: macOS-latest
-            target: mas
-          - host: ubuntu-latest
+          - host: ubuntu-20.04
             target: linux
     steps:
       - uses: actions/checkout@v2
@@ -56,7 +49,6 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - uses: actions/cache@v1
-        if: runner.os != 'macOS'
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -75,49 +67,13 @@ jobs:
           path: out
   installers:
     needs: bundle
-    runs-on: ${{ matrix.distributable.os }}-latest
+    runs-on: ${{ matrix.distributable.os }}
     strategy:
       matrix:
         distributable:
-          - os: Windows
-            platform: win32
-            maker: squirrel
-          - os: Windows
-            platform: win32
-            maker: zip
-          - os: macOS
-            platform: darwin
-            maker: dmg
-          # - os: macOS
-          #   platform: darwin
-          #   maker: pkg
-          - os: macOS
-            platform: darwin
-            maker: zip
-          - os: macOS
-            platform: mas
-            maker: dmg
-          # - os: macOS
-          #   platform: mas
-          #   maker: pkg
-          - os: macOS
-            platform: mas
-            maker: zip
-          - os: Ubuntu
-            platform: linux
-            maker: zip
-          - os: Ubuntu
-            platform: linux
-            maker: deb
-          - os: Ubuntu
+          - os: Ubuntu-20.04
             platform: linux
             maker: flatpak
-          - os: Ubuntu
-            platform: linux
-            maker: rpm
-          - os: Ubuntu
-            platform: linux
-            maker: snap
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app
@@ -137,7 +93,6 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - uses: actions/cache@v1
-        if: matrix.distributable.os != 'macOS'
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -151,8 +106,6 @@ jobs:
           target-platform: ${{ matrix.distributable.platform }}
           windows-cert-filename: ci/codesign.pfx
           windows-cert-importer: ci/setup-windows-certificate.sh
-        env:
-          DEBUG: "electron-installer-snap:snapcraft"
       - name: Save distributable
         uses: actions/upload-artifact@v1
         with:
