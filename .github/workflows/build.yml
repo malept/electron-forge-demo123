@@ -114,6 +114,11 @@ jobs:
             maker: zip
           - os: macOS-latest
             platform: darwin
+            arch: x64
+            maker: dmg
+          - os: macOS-latest
+            platform: darwin
+            arch: arm64
             maker: dmg
           # - os: macOS-latest
           #   platform: darwin
