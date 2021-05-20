@@ -180,10 +180,10 @@ jobs:
             platform: linux
             arch: x64
             maker: flatpak
-          - os: Ubuntu-latest
-            platform: linux
-            arch: arm64
-            maker: flatpak
+          # - os: Ubuntu-latest
+          #   platform: linux
+          #   arch: arm64
+          #   maker: flatpak
           - os: Ubuntu-latest
             platform: linux
             arch: x64
@@ -196,10 +196,10 @@ jobs:
             platform: linux
             arch: x64
             maker: snap
-          - os: Ubuntu-18.04
-            platform: linux
-            arch: arm64
-            maker: snap
+          # - os: Ubuntu-18.04
+          #   platform: linux
+          #   arch: arm64
+          #   maker: snap
     steps:
       - uses: actions/checkout@v2
       - name: Load bundled app
