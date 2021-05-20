@@ -92,106 +92,106 @@ jobs:
           path: out
   installers:
     needs: bundle
-    runs-on: ${{ matrix.distributable.os }}-latest
+    runs-on: ${{ matrix.distributable.os }}
     strategy:
       matrix:
         distributable:
-          - os: Windows
+          - os: Windows-latest
             platform: win32
             arch: x64
             maker: squirrel
-          - os: Windows
+          - os: Windows-latest
             platform: win32
             arch: arm64
             maker: squirrel
-          - os: Windows
+          - os: Windows-latest
             platform: win32
             arch: x64
             maker: zip
-          - os: Windows
+          - os: Windows-latest
             platform: win32
             arch: arm64
             maker: zip
-          - os: macOS
+          - os: macOS-latest
             platform: darwin
             maker: dmg
-          # - os: macOS
+          # - os: macOS-latest
           #   platform: darwin
           #   arch: x64
           #   maker: pkg
-          # - os: macOS
+          # - os: macOS-latest
           #   platform: darwin
           #   arch: arm64
           #   maker: pkg
-          - os: macOS
+          - os: macOS-latest
             platform: darwin
             arch: x64
             maker: zip
-          - os: macOS
+          - os: macOS-latest
             platform: darwin
             arch: arm64
             maker: zip
-          - os: macOS
+          - os: macOS-latest
             platform: mas
             arch: x64
             maker: dmg
-          - os: macOS
+          - os: macOS-latest
             platform: mas
             arch: arm64
             maker: dmg
-          # - os: macOS
+          # - os: macOS-latest
           #   platform: mas
           #   arch: x64
           #   maker: pkg
-          # - os: macOS
+          # - os: macOS-latest
           #   platform: mas
           #   arch: arm64
           #   maker: pkg
-          - os: macOS
+          - os: macOS-latest
             platform: mas
             arch: x64
             maker: zip
-          - os: macOS
+          - os: macOS-latest
             platform: mas
             arch: arm64
             maker: zip
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: x64
             maker: zip
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: arm64
             maker: zip
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: x64
             maker: deb
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: arm64
             maker: deb
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: x64
             maker: flatpak
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: arm64
             maker: flatpak
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: x64
             maker: rpm
-          - os: Ubuntu
+          - os: Ubuntu-latest
             platform: linux
             arch: arm64
             maker: rpm
-          - os: Ubuntu
+          - os: Ubuntu-18.04
             platform: linux
             arch: x64
             maker: snap
-          - os: Ubuntu
+          - os: Ubuntu-18.04
             platform: linux
             arch: arm64
             maker: snap
