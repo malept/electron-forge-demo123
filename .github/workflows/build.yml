@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - discord/load-relative-json-files
       - forge6
       - master
     tags:
