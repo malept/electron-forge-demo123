@@ -3,6 +3,7 @@ const path = require('path')
 
 module.exports = {
   "packagerConfig": {
+    "asar": true,
     "osxSign": {
       "identity": "codesign.electronjs.org",
       "gatekeeper-assess": false
