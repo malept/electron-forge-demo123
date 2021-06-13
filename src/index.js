@@ -1,5 +1,9 @@
 const { app, BrowserWindow } = require('electron');
+const fs = require('fs');
 const path = require('path');
+
+const packageJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'package.json')));
+console.log(`Package metadata (main): Name="${packageJSON.name}", Version="${packageJSON.version}"`);
 
 const createWindow = () => {
   // Create the browser window.
@@ -11,7 +15,7 @@ const createWindow = () => {
       disableBlinkFeatures: 'Auxclick',
       enableRemoteModule: false,
       nodeIntegration: false,
-      sandbox: true,
+      preload: path.join(__dirname, 'preload.js'),
     }
   });
 
