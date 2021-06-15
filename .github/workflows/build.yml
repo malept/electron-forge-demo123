@@ -82,7 +82,7 @@ jobs:
       # Archives the bundled app before uploading, to preserve permissions and symlinks.
       # See: https://github.com/actions/upload-artifact#limitations
       - name: Archive bundled app
-        run: tar cvf bundled-app-${{ matrix.platform.target }}-${{ matrix.platform.arch }}.tar out/
+        run: tar cvf bundled-app-${{ matrix.platform.target }}-${{ matrix.platform.arch }}.tar out
       - name: Save bundled app
         uses: actions/upload-artifact@v1
         with:
