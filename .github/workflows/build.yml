@@ -125,7 +125,8 @@ jobs:
         with:
           name: bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}
       - name: Unarchive bundled app
-        run: tar xvf bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}.tar
+        shell: bash
+        run: tar xvf bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}/bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}.tar
       - name: Setup Platform dependencies
         run: ci/platform_setup.sh
         env:
