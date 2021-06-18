@@ -3,7 +3,7 @@
   "productName": "demo123",
   "version": "1.4.0",
   "description": "My Electron application",
-  "main": "src/index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -21,17 +21,22 @@
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.52",
-    "@electron-forge/maker-deb": "^6.0.0-beta.52",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.52",
-    "@electron-forge/maker-flatpak": "^6.0.0-beta.52",
-    "@electron-forge/maker-pkg": "^6.0.0-beta.52",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.52",
-    "@electron-forge/maker-snap": "^6.0.0-beta.52",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.52",
-    "@electron-forge/maker-zip": "^6.0.0-beta.52",
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.57",
+    "@electron-forge/maker-flatpak": "^6.0.0-beta.57",
+    "@electron-forge/maker-pkg": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-snap": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.57",
     "@electron-forge/publisher-github": "^6.0.0-beta.52",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+    "css-loader": "^5.0.0",
     "electron": "^13.1.2",
-    "source-map-support": "^0.5.16"
+    "node-loader": "^2.0.0",
+    "source-map-support": "^0.5.16",
+    "style-loader": "^2.0.0"
   }
 }

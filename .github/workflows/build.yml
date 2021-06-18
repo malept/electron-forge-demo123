@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - forge6-issue-1988
       - forge6
       - master
     tags:
