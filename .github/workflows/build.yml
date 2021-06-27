@@ -42,27 +42,15 @@ jobs:
           - host: windows-latest
             target: win32
             arch: x64
-          - host: windows-latest
-            target: win32
-            arch: arm64
           - host: macOS-latest
             target: darwin
             arch: x64
           - host: macOS-latest
-            target: darwin
-            arch: arm64
-          - host: macOS-latest
             arch: x64
-            target: mas
-          - host: macOS-latest
-            arch: arm64
             target: mas
           - host: ubuntu-latest
             target: linux
             arch: x64
-          - host: ubuntu-latest
-            target: linux
-            arch: arm64
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
@@ -106,15 +94,7 @@ jobs:
             maker: squirrel
           - os: Windows-latest
             platform: win32
-            arch: arm64
-            maker: squirrel
-          - os: Windows-latest
-            platform: win32
             arch: x64
-            maker: zip
-          - os: Windows-latest
-            platform: win32
-            arch: arm64
             maker: zip
           - os: macOS-latest
             platform: darwin
@@ -122,23 +102,7 @@ jobs:
             maker: dmg
           - os: macOS-latest
             platform: darwin
-            arch: arm64
-            maker: dmg
-          # - os: macOS-latest
-          #   platform: darwin
-          #   arch: x64
-          #   maker: pkg
-          # - os: macOS-latest
-          #   platform: darwin
-          #   arch: arm64
-          #   maker: pkg
-          - os: macOS-latest
-            platform: darwin
             arch: x64
-            maker: zip
-          - os: macOS-latest
-            platform: darwin
-            arch: arm64
             maker: zip
           - os: macOS-latest
             platform: mas
@@ -146,23 +110,7 @@ jobs:
             maker: dmg
           - os: macOS-latest
             platform: mas
-            arch: arm64
-            maker: dmg
-          # - os: macOS-latest
-          #   platform: mas
-          #   arch: x64
-          #   maker: pkg
-          # - os: macOS-latest
-          #   platform: mas
-          #   arch: arm64
-          #   maker: pkg
-          - os: macOS-latest
-            platform: mas
             arch: x64
-            maker: zip
-          - os: macOS-latest
-            platform: mas
-            arch: arm64
             maker: zip
           - os: Ubuntu-latest
             platform: linux
@@ -170,40 +118,20 @@ jobs:
             maker: zip
           - os: Ubuntu-latest
             platform: linux
-            arch: arm64
-            maker: zip
-          - os: Ubuntu-latest
-            platform: linux
             arch: x64
-            maker: deb
-          - os: Ubuntu-latest
-            platform: linux
-            arch: arm64
             maker: deb
           - os: Ubuntu-latest
             platform: linux
             arch: x64
             maker: flatpak
-          # - os: Ubuntu-latest
-          #   platform: linux
-          #   arch: arm64
-          #   maker: flatpak
           - os: Ubuntu-latest
             platform: linux
             arch: x64
-            maker: rpm
-          - os: Ubuntu-latest
-            platform: linux
-            arch: arm64
             maker: rpm
           - os: Ubuntu-18.04
             platform: linux
             arch: x64
             maker: snap
-          # - os: Ubuntu-18.04
-          #   platform: linux
-          #   arch: arm64
-          #   maker: snap
     steps:
       - uses: actions/checkout@v2
       - name: Download bundled app artifact
