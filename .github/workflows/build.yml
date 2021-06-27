@@ -3,6 +3,7 @@ name: Build
 on:
   push:
     branches:
+      - discord/simple-native-module-inclusion
       - forge6
       - master
     tags:
