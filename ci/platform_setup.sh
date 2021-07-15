@@ -20,7 +20,7 @@ case "$(uname -s)" in
         ;;
     "Windows"*|"MINGW"*|"MSYS"*)
         if [[ "$MAKER" = "wix" ]]; then
-          pwsh.exe ".\setup-wix.ps1"
+          pwsh.exe "$(dirname $0)"/setup-wix.ps1
         fi
         ;;
 esac
