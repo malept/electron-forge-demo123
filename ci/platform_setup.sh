@@ -18,4 +18,9 @@ case "$(uname -s)" in
     "Darwin")
         "$(dirname $0)"/codesign/import-testing-cert-ci.sh
         ;;
+    "Windows"*|"MINGW"*|"MSYS"*)
+        if [[ "$MAKER" = "wix" ]]; then
+          C:/ProgramData/chocolatey/lib/wixtoolset/tools/wix311.exe /install /quiet /norestart
+        fi
+        ;;
 esac
