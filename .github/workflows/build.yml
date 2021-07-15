@@ -93,6 +93,7 @@ jobs:
         shell: bash
         run: tar xvf bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}/bundled-app-${{ matrix.distributable.platform }}-${{ matrix.distributable.arch }}.tar
       - name: Setup Platform dependencies
+        shell: bash
         run: ci/platform_setup.sh
         env:
           MAKER: ${{ matrix.distributable.maker }}

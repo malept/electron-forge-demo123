@@ -20,7 +20,7 @@ case "$(uname -s)" in
         ;;
     "Windows"*|"MINGW"*|"MSYS"*)
         if [[ "$MAKER" = "wix" ]]; then
-          C:/ProgramData/chocolatey/lib/wixtoolset/tools/wix311.exe /install /quiet /norestart
+          pwsh.exe ".\setup-wix.ps1"
         fi
         ;;
 esac
