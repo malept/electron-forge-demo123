@@ -20,7 +20,7 @@ case "$(uname -s)" in
         ;;
     "Windows"*|"MINGW"*|"MSYS"*)
         if [[ "$MAKER" = "wix" ]]; then
-          pwsh.exe "$(dirname $0)"/setup-wix.ps1
+          echo 'C:\Program Files (x86)\WiX Toolset v3.11\bin' >> $GITHUB_PATH
         fi
         ;;
 esac
